@@ -3,9 +3,13 @@ package com.example.remedialucp2.room
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "tblProgramStudi")
+@Entity(tableName = "tblBuku")
 data class Buku(
     @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
-    val nama_programstudi : String
+    val id: Int = 0,
+
+    val judul: String,
+    val pengarang: String,
+    val kategori: String
 )
+

@@ -24,7 +24,7 @@ abstract class DatabasePerpustakaan : RoomDatabase() {
     abstract fun auditLogDao(): AuditLogDao
 
     companion object {
-        @VolATILE
+        @Volatile
         private var Instance: DatabasePerpustakaan? = null
 
         fun getDatabase(context: Context): DatabasePerpustakaan {

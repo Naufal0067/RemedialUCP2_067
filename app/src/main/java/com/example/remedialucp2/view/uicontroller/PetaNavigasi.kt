@@ -9,7 +9,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.remedialucp2.view.HalamanHome
 import com.example.remedialucp2.view.route.DestinasiDetailBuku
+import com.example.remedialucp2.view.route.DestinasiDetailBuku.itemIdArg
+import com.example.remedialucp2.view.route.DestinasiEditBuku
 import com.example.remedialucp2.view.route.DestinasiEntryBuku
 import com.example.remedialucp2.view.route.DestinasiHome
 
@@ -27,7 +30,7 @@ fun HostNavigasi(
     NavHost(navController=navController, startDestination = DestinasiHome.route, modifier = Modifier)
     {
         composable(DestinasiHome.route){
-            HomeScreen(
+            HalamanHome(
                 navigateToItemEntry = {navController.navigate(DestinasiEntryBuku.route)},
 
                 navigateToItemUpdate = {
@@ -36,21 +39,21 @@ fun HostNavigasi(
             )
         }
         composable(DestinasiEntryBuku.route){
-            EntrySiswaScreen(navigateBack = { navController.popBackStack()})
+            EntryBukuScreen(navigateBack = { navController.popBackStack()})
         }
 
-        composable(route = DestinasiDetailSiswa.routeWithArgs,
+        composable(route = DestinasiDetailBuku.routeWithArgs,
             arguments = listOf(navArgument(itemIdArg) {
                 type = NavType.IntType
             })
         ){
             DetailSiswaScreen(
-                navigateToEditItem = {navController.navigate("${DestinasiEditSiswa.route}/$it")},
+                navigateToEditItem = {navController.navigate("${DestinasiEditBuku.route}/$it")},
                 navigateBack = {navController.navigateUp()})
         }
         composable(
-            route = DestinasiEditSiswa.routeWithArgs,
-            arguments = listOf(navArgument(DestinasiEditSiswa.itemIdArg) {
+            route = DestinasiEditBuku.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiEditBuku.itemIdArg) {
                 type = NavType.IntType
             })
         ) {
